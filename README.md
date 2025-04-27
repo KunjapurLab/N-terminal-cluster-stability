@@ -13,12 +13,18 @@ If you need assistance, please contact kunjapurlab@udel.edu and put [N-degron me
 ## Set up Instructions
 
 1.) Download and extract all scripts into the same folder. Add any .FASTQ/.FASTA files you would like to analyze to this folder.
+
 2.) You will have to install a series of python libraries. You can optionally choose to do this in a new virtual environment. Within your target environment, install the libraries using "pip install -r requirements.txt"
+
 3.) If necessary, begin by converting your FASTQ or FASTQ.gz files to a FASTA format using the "FASTQ.gz to FASTA.py" or "FASTQ to FASTA.py" scripts. Note that for large 
 compressed file sizes you can expect a 3-5x increase in file size, so have the appropriate hard-drive space ready before hand.
+
 4.) If necessary, demultiplex samples pooled in the same run using "FASTA Demultiplexer.py"
+
 5.) Optionally, to analyze amino acid and codon distribution and bias, run "FASTA Codon and AA Distributions.py" 
+
 6.) Next, run "Sequence Dictionary Generator.py" to generate a sequence-stability database. This will be the foundation for future analysis.
+
 7.) From this database, feel free to utilize any visualization scripts (demarked with 4.) in the folder). Adjust the line in the code to account for your database.
 
 ## FAQS 
