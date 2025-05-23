@@ -1,26 +1,23 @@
-# NGS Software Suite ReadMe
+# NGS Software Suite Read Me
 
 
 ## Introduction
 Dear curious scientist,
 
-Thank you for considering our bioinformatics software for your studies. This software suite is designed to input raw, tiered FASTQ.gz/FASTA data, covert it into smaller databases, and enable visualization of FACS data collected from protein stability & protein degradation studies. We utilize protein stability index (PSI) as our metric for evaluating the stability of sequences. We direct you to work from the Elledge Lab, particularly Yen et al. (2008) and Timms et al. (2019) for strong references regarding the development and utilization of this weighted average metric. 
+Thank you for considering our bioinformatics software for your studies. This software suite is designed to take you from raw FASTQ.gz/FASTA data through to data visualization of multiple tiered bins of FACS data. This suite is introduced in "Combinatorial mutagenesis of N-terminal sequences reveals unexpected and expanded stability determinants of the Escherichia coli N-degron pathway" by Sen et al., Biorxiv (2025) and "Developing a flow cytometric method to evaluate the stability of protein N-termini" by Sen et al., accepted at Methods In Enzymology (2025). As such, we suggest you use that text to accompany this read me. We utilize protein stability index (PSI) as our metric for evaluating the stability of sequences. We direct you to work from the Elledge Lab, particularly Yen et al. (2008) and Timms et al. (2019) for strong references regarding the development and utilization of this weighted average metric. Furthermore, we have included a small test dataset to help you pilot out this workflow.
 
-This suite is introduced in "Development of a flow cytometric method to evaluate the impact of N-terminal sequences on protein stability." by Sen et al., Methods In Enzymology (2025) as well as "Combinatorial mutagenesis of N-terminal sequences reveals unexpected and expanded stability determinants of the Escherichia coli N-degron pathway" by Sen et al., Biorxiv (2025). As such, we suggest you use those texts to accompany this ReadMe. 
+We are in the process of updating this repository so please stay tuned for database and N-FIVE uploads by the end of May.
 
-In this repository you will find scripts to analyze your own data, sample FASTQ datasets, trimmed sequence-stability databases collected for "Combinatorial mutagenesis...", and a stability predictive machine learning model, N-FIVE.
 
 ## Features
 - Convert raw FASTQ(.gz) → FASTA  
 - Demultiplex pooled FASTA files  
 - Compute Protein Stability Index (PSI)  
 - Generate amino-acid & codon usage reports  
-- Visualize multi-tiered FACS binned data as heatmaps, WebLogos, and degron lists
-- Predict the stability of N-terminal motifs using N-FIVE  
+- Visualize multi-tiered FACS binned data as heatmaps, WebLogos, and degron lists  
 - …and more!
 
 ## Installation
-Installation should be complete in 1-2 minutes at the most.
 1. Prerequisites
    - Windows 10 or later  
    - Python 3.8–3.13  
@@ -35,15 +32,15 @@ Installation should be complete in 1-2 minutes at the most.
    # install dependencies
    pip install -r requirements.txt
 
-## Bioinformatic Script Instructions
-1.) Download and extract all scripts into the same folder. Add any .FASTQ/.FASTA files you would like to analyze to this folder. We have provided sample data to trial the software.
+## Set up Instructions
+1.) Download and extract all scripts into the same folder. Add any .FASTQ/.FASTA files you would like to analyze to this folder.
 
 2.) You will have to install a series of python libraries. You can optionally choose to do this in a new virtual environment. Within your target environment, install the libraries using "pip install -r requirements.txt"
 
 3.) If necessary, begin by converting your FASTQ or FASTQ.gz files to a FASTA format using the "FASTQ.gz to FASTA.py" or "FASTQ to FASTA.py" scripts. Note that for large 
 compressed file sizes you can expect a 3-5x increase in file size, so have the appropriate hard-drive space ready before hand.
 
-4.) If necessary, demultiplex samples pooled in the same run using "FASTA Demultiplexer.py" This should provide separate FASTA files as necessary.
+4.) If necessary, demultiplex samples pooled in the same run using "FASTA Demultiplexer.py"
 
 5.) Optionally, to analyze amino acid and codon distribution and bias, run "FASTA Codon and AA Distributions.py" 
 
@@ -51,13 +48,12 @@ compressed file sizes you can expect a 3-5x increase in file size, so have the a
 
 7.) From this database, feel free to utilize any visualization scripts (demarked with 4.) in the folder). Adjust the line in the code to account for your database.
 
-Note that steps that FASTQ to FASTA conversion and database generation can take time to complete, ranging from minutes to hours for larger file sizes.
-
 ## Citations
 If you utilize these scripts, please cite:
-Sen et al. Biorxiv (2025) "Combinatorial mutagenesis of N-terminal sequences in E. coli reveals unexpected N-degron stability determinants." 
-Sen et al., Methods In Enzymology (2025). "Development of a flow cytometric method to evaluate the impact of N-terminal sequences on protein stability."
+Sen et al. Biorxiv (2025). "Combinatorial mutagenesis of N-terminal sequences reveals unexpected and expanded stability determinants of the Escherichia coli N-degron pathway." OR
+Sen et al., Methods In Enzymology (2025). "Developing a flow cytometric method to evaluate the stability of protein N-termini."
 
+At the moment, these publications are in the preparation & submission phase.
 
 ## Contact
 If you need assistance, please contact kunjapurlab [at] udel (dot) edu and put [N-degron methods] at the beginning of your email subject line. Learn more about the lab here: https://www.kunjapurlab.org/ 
@@ -68,9 +64,5 @@ You may also email the first author and primary developer of this code at sabyas
 Q: What versions of Python has this code been tested?
 A: The code has been developed and tested on Python 3.13
 
-Q: The PSI values in the LFTR- and ClpS- datasets are odd, what is going on?
-A: This is a temporary bug, in these two datasets the PSIs are flipped (i.e. when the PSI should be 1.2 it is actually 3.8) due how the bins were loaded into the database generation program. This will be resolved soon!
-
 ## History
-Sequence databases and N-FIVE were generated in February 2025.
-This code was last updated in June 2025.
+This code was last updated in April 2025
