@@ -4,7 +4,9 @@
 ## Introduction
 Dear curious scientist,
 
-Thank you for considering our bioinformatics software for your studies. This software suite is designed to take you from raw FASTQ.gz/FASTA data through to data visualization of multiple tiered bins of FACS data. This suite is introduced in "Developing a flow cytometric method to evaluate the stability of protein N-termini" by Sen et al., Methods In Enzymology (2025). As such, we suggest you use that text to accompany this read me. We utilize protein stability index (PSI) as our metric for evaluating the stability of sequences. We direct you to work from the Elledge Lab, particularly Yen et al. (2008) and Timms et al. (2019) for strong references regarding the development and utilization of this weighted average metric. Furthermore, we have included a small test dataset to help you pilot out this workflow.
+Thank you for considering our bioinformatics software for your studies. This software suite is designed to take you from raw FASTQ.gz/FASTA data through to data visualization of multiple tiered bins of FACS data. This suite is introduced in "Combinatorial mutagenesis of N-terminal sequences reveals unexpected and expanded stability determinants of the Escherichia coli N-degron pathway" by Sen et al., Biorxiv (2025) and "Developing a flow cytometric method to evaluate the stability of protein N-termini" by Sen et al., accepted at Methods In Enzymology (2025). As such, we suggest you use that text to accompany this read me. We utilize protein stability index (PSI) as our metric for evaluating the stability of sequences. We direct you to work from the Elledge Lab, particularly Yen et al. (2008) and Timms et al. (2019) for strong references regarding the development and utilization of this weighted average metric. Furthermore, we have included a small test dataset to help you pilot out this workflow.
+
+We are in the process of updating this repository so please stay tuned for database and N-FIVE uploads by the end of May.
 
 
 ## Features
@@ -48,7 +50,7 @@ compressed file sizes you can expect a 3-5x increase in file size, so have the a
 
 ## Citations
 If you utilize these scripts, please cite:
-Sen et al. Biorxiv (2025) "Combinatorial mutagenesis of N-terminal sequences in E. coli reveals unexpected N-degron stability determinants." 
+Sen et al. Biorxiv (2025). "Combinatorial mutagenesis of N-terminal sequences reveals unexpected and expanded stability determinants of the Escherichia coli N-degron pathway." OR
 Sen et al., Methods In Enzymology (2025). "Developing a flow cytometric method to evaluate the stability of protein N-termini."
 
 At the moment, these publications are in the preparation & submission phase.
