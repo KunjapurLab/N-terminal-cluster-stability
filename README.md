@@ -66,6 +66,9 @@ You may also email the first author and primary developer of this code at sabyas
 Q: What versions of Python has this code been tested?
 A: The code has been developed and tested on Python 3.13
 
+Q: The PSI values in the LFTR- and ClpS- datasets are odd, what is going on?
+A: This is a temporary bug, in these two datasets the PSIs are flipped (i.e. when the PSI should be 1.2 it is actually 3.8) due how the bins were loaded into the database generation program. This will be resolved soon!
+
 ## History
 Sequence databases and N-FIVE were generated in February 2025.
 This code was last updated in June 2025.
