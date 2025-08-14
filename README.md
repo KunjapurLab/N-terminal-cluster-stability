@@ -6,7 +6,7 @@ Dear curious scientist,
 
 Thank you for considering our bioinformatics software for your studies. This software suite is designed to input raw, tiered FASTQ.gz/FASTA data, covert it into smaller databases, and enable visualization of FACS data collected from protein stability & protein degradation studies. We utilize protein stability index (PSI) as our metric for evaluating the stability of sequences. We direct you to work from the Elledge Lab, particularly Yen et al. (2008) and Timms et al. (2019) for strong references regarding the development and utilization of this weighted average metric. 
 
-This suite is introduced in "Development of a flow cytometric method to evaluate the impact of N-terminal sequences on protein stability" by Sen et al., Methods In Enzymology [in review] (2025) as well as "Combinatorial mutagenesis of N-terminal sequences reveals unexpected and expanded stability determinants of the Escherichia coli N-degron pathway" by Sen et al., Biorxiv (2025). As such, we suggest you use those texts to accompany this ReadMe. 
+This suite is introduced in "Development of a flow cytometric method to evaluate the impact of N-terminal sequences on protein stability." by Sen et al., Methods In Enzymology (2025) as well as "Combinatorial mutagenesis of N-terminal sequences reveals unexpected and expanded stability determinants of the Escherichia coli N-degron pathway" by Sen et al., Biorxiv (2025). As such, we suggest you use those texts to accompany this ReadMe. 
 
 In this repository you will find scripts to analyze your own data, sample FASTQ datasets, trimmed sequence-stability databases collected for "Combinatorial mutagenesis...", and a stability predictive machine learning model, N-FIVE.
 
@@ -20,6 +20,7 @@ In this repository you will find scripts to analyze your own data, sample FASTQ 
 - …and more!
 
 ## Installation
+Installation should be complete in 1-2 minutes at the most.
 1. Prerequisites
    - Windows 10 or later  
    - Python 3.8–3.13  
@@ -35,14 +36,14 @@ In this repository you will find scripts to analyze your own data, sample FASTQ 
    pip install -r requirements.txt
 
 ## Bioinformatic Script Instructions
-1.) Download and extract all scripts into the same folder. Add any .FASTQ/.FASTA files you would like to analyze to this folder.
+1.) Download and extract all scripts into the same folder. Add any .FASTQ/.FASTA files you would like to analyze to this folder. We have provided sample data to trial the software.
 
 2.) You will have to install a series of python libraries. You can optionally choose to do this in a new virtual environment. Within your target environment, install the libraries using "pip install -r requirements.txt"
 
 3.) If necessary, begin by converting your FASTQ or FASTQ.gz files to a FASTA format using the "FASTQ.gz to FASTA.py" or "FASTQ to FASTA.py" scripts. Note that for large 
 compressed file sizes you can expect a 3-5x increase in file size, so have the appropriate hard-drive space ready before hand.
 
-4.) If necessary, demultiplex samples pooled in the same run using "FASTA Demultiplexer.py"
+4.) If necessary, demultiplex samples pooled in the same run using "FASTA Demultiplexer.py" This should provide separate FASTA files as necessary.
 
 5.) Optionally, to analyze amino acid and codon distribution and bias, run "FASTA Codon and AA Distributions.py" 
 
@@ -50,12 +51,13 @@ compressed file sizes you can expect a 3-5x increase in file size, so have the a
 
 7.) From this database, feel free to utilize any visualization scripts (demarked with 4.) in the folder). Adjust the line in the code to account for your database.
 
+Note that steps that FASTQ to FASTA conversion and database generation can take time to complete, ranging from minutes to hours for larger file sizes.
+
 ## Citations
 If you utilize these scripts, please cite:
 Sen et al. Biorxiv (2025) "Combinatorial mutagenesis of N-terminal sequences in E. coli reveals unexpected N-degron stability determinants." 
-Sen et al., Methods In Enzymology (2025). "Developing a flow cytometric method to evaluate the stability of protein N-termini."
+Sen et al., Methods In Enzymology (2025). "Development of a flow cytometric method to evaluate the impact of N-terminal sequences on protein stability."
 
-At the moment, these publications are in the preparation & submission phase.
 
 ## Contact
 If you need assistance, please contact kunjapurlab [at] udel (dot) edu and put [N-degron methods] at the beginning of your email subject line. Learn more about the lab here: https://www.kunjapurlab.org/ 
