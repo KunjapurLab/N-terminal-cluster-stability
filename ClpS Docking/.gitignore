@@ -1,0 +1,5 @@
+runs/
+*.log
+*.sc
+*.pdb
+!examples/3O2H_AB_pep5.pdb
