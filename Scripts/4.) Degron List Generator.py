@@ -1,5 +1,26 @@
 import sqlite3
 import os
+import sys
+
+
+def resolve_db_path(default_db_name):
+    if len(sys.argv) > 1:
+        cli_path = sys.argv[1]
+        if os.path.isfile(cli_path):
+            return cli_path
+        raise FileNotFoundError(f"Database file not found: {cli_path}")
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root = os.path.dirname(script_dir)
+    candidates = [
+        default_db_name,
+        os.path.join(script_dir, default_db_name),
+        os.path.join(repo_root, "Databases", default_db_name),
+    ]
+    for path in candidates:
+        if os.path.isfile(path):
+            return path
+    raise FileNotFoundError("Database file not found. Searched:\n" + "\n".join(f"- {p}" for p in candidates))
 
 def fetch_result_list_from_db(db_file):
     """Fetches the result list from the SQLite database."""
@@ -56,7 +77,7 @@ def fetch_common_counts_and_reads(db_file):
 
 # Main execution
 if __name__ == '__main__':
-    db_file = "10M ClpS- consensus 22Nov.db"  # Path to your SQLite database file
+    db_file = resolve_db_path("10M ClpS- consensus 24Nov.db")
     output_file = " 22Nov2024 10M ClpS- Degron List"
 
     # Fetch result list from the database (no recalculation of PSI)

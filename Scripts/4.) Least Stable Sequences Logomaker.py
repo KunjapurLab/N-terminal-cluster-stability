@@ -3,6 +3,22 @@ import time
 import pandas as pd
 import matplotlib.pyplot as plt
 import logomaker  # pip install logomaker
+import os
+import sys
+
+
+def resolve_db_path(default_db_name):
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root = os.path.dirname(script_dir)
+    candidates = [
+        default_db_name,
+        os.path.join(script_dir, default_db_name),
+        os.path.join(repo_root, "Databases", default_db_name),
+    ]
+    for path in candidates:
+        if os.path.isfile(path):
+            return path
+    raise FileNotFoundError("Database file not found. Searched:\n" + "\n".join(f"- {p}" for p in candidates))
 
 def load_data_from_db(db_file):
     """
@@ -128,10 +144,16 @@ def generate_weblogo(sequences, title="WebLogo of Sequences", output_file=None):
 # --- Main Execution ---
 
 if __name__ == '__main__':
-    # Specify your database files.
-    db_file1 = "Feb2025 NGS for Dec2024 WT resort.db"   # Use original PSI values
-    db_file2 = "10M LFTR- consensus 22Nov.db"            # Recalculate PSI
-    db_file3 = "10M ClpS- consensus 24Nov.db"            # Recalculate PSI
+    # Optional CLI override:
+    # python "Scripts/4.) Least Stable Sequences Logomaker.py" <db1> <db2> <db3>
+    if len(sys.argv) == 4:
+        db_file1, db_file2, db_file3 = sys.argv[1], sys.argv[2], sys.argv[3]
+    elif len(sys.argv) == 1:
+        db_file1 = resolve_db_path("Feb2025 NGS for Dec2024 WT resort.db")  # Use original PSI values
+        db_file2 = resolve_db_path("10M LFTR- consensus 22Nov.db")           # Recalculate PSI
+        db_file3 = resolve_db_path("10M ClpS- consensus 24Nov.db")           # Recalculate PSI
+    else:
+        raise ValueError("Provide either zero args or exactly 3 database paths.")
     
     # Gather sequences from all databases.
     all_sequences = []

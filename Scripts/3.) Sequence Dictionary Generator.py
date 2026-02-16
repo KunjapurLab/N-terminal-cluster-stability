@@ -1,6 +1,7 @@
 import os
 import sqlite3
 from collections import Counter
+import sys
 
 # Codon table for translation
 codon_table = {
@@ -118,13 +119,38 @@ def process_fasta_files(fasta_files, common, consensus):
     return PSI_calc(result_list), total_match_count
 
 
+def resolve_fasta_path(filename):
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root = os.path.dirname(script_dir)
+    candidates = [
+        filename,
+        os.path.join(script_dir, filename),
+        os.path.join(repo_root, "Sample Data", filename),
+    ]
+    for path in candidates:
+        if os.path.isfile(path):
+            return path
+    return filename
+
+
+def resolve_output_db_path(db_name):
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root = os.path.dirname(script_dir)
+    db_dir = os.path.join(repo_root, "Databases")
+    os.makedirs(db_dir, exist_ok=True)
+    return os.path.join(db_dir, db_name)
+
+
 # Main execution
 if __name__ == '__main__':
     fasta_files = ["10M ClpS- B1.fasta", "10M ClpS- B2.fasta", "10M ClpS- B3.fasta", "10M ClpS- B4.fasta"]
+    if len(sys.argv) == 5:
+        fasta_files = sys.argv[1:5]
     common = "ATCAGTGACTTC"
     # Updated consensus sequence with X as wildcard
     consensus = "XXXACTGGAGGATGGTCGCACGCTTTCGGACTACAACATCCAGAAAGAATCTACCCTTCATTTGGTTCTGCGTCTGCGTGGAGGAXXXXXXXXXXXXXXXATCAGTGACTTCATCGCATCCAAGGGCGAGGAGCTCTTTACTGGCGTAGTACCAATT"
-    db_file = "10M ClpS- consensus 24Nov.db"
+    db_file = resolve_output_db_path("10M ClpS- consensus 24Nov.db")
+    fasta_files = [resolve_fasta_path(path) for path in fasta_files]
 
     # Process the FASTA files
     result_list, total_match_count = process_fasta_files(fasta_files, common, consensus)

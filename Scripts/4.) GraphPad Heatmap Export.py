@@ -3,6 +3,28 @@ import time
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import os
+import sys
+
+
+def resolve_db_path(default_db_name):
+    if len(sys.argv) > 1:
+        cli_path = sys.argv[1]
+        if os.path.isfile(cli_path):
+            return cli_path
+        raise FileNotFoundError(f"Database file not found: {cli_path}")
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    repo_root = os.path.dirname(script_dir)
+    candidates = [
+        default_db_name,
+        os.path.join(script_dir, default_db_name),
+        os.path.join(repo_root, "Databases", default_db_name),
+    ]
+    for path in candidates:
+        if os.path.isfile(path):
+            return path
+    raise FileNotFoundError("Database file not found. Searched:\n" + "\n".join(f"- {p}" for p in candidates))
 
 def load_data_from_db(db_file):
     """
@@ -106,7 +128,7 @@ def recalculate_psi(result_list):
 
 # Main part of the code
 if __name__ == '__main__':
-    db_file = "Feb2025 NGS for Dec2024 WT resort.db"
+    db_file = resolve_db_path("Feb2025 NGS for Dec2024 WT resort.db")
     graphpad_output_file = "WTBL21Feb2025AVITI_graphpad_heatmap_data.csv"
 
     # Load data from the database
