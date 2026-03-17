@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>N-FIVE Web Studio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="bg-shape bg-shape-a"></div>
+  <div class="bg-shape bg-shape-b"></div>
+
+  <main class="layout">
+    <header class="hero reveal">
+      <p class="eyebrow">N-FIVE Local Studio</p>
+      <h1>PSI Prediction + SHAP Signal Explorer</h1>
+      <p class="subtext">Local web interface for fast sequence scoring and residue-level attribution.</p>
+      <p class="model-path">Model: <code>{{ model_path }}</code></p>
+    </header>
+
+    <nav class="tabbar reveal delay-1" role="tablist" aria-label="Workflows">
+      <button class="tab active" data-tab="predict" role="tab" aria-selected="true">Predict PSI</button>
+      <button class="tab" data-tab="shap" role="tab" aria-selected="false">SHAP Explorer</button>
+    </nav>
+
+    <section id="predict" class="panel reveal delay-2 active-panel">
+      <h2>Batch PSI Prediction</h2>
+      <p>Enter one 5-residue sequence per line.</p>
+      <textarea id="predict-input" rows="10" placeholder="Example&#10;ARNDC&#10;FLFVQ"></textarea>
+      <div class="actions">
+        <button id="predict-btn" class="accent">Predict</button>
+        <button id="predict-clear" class="ghost">Clear</button>
+      </div>
+      <div id="predict-status" class="status"></div>
+      <div class="table-wrap">
+        <table id="predict-table">
+          <thead>
+            <tr>
+              <th>Sequence</th>
+              <th>PSI</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="shap" class="panel reveal delay-3">
+      <h2>SHAP for a Single Sequence</h2>
+      <p>Compute per-position and top-feature SHAP contributions.</p>
+      <div class="row">
+        <input id="shap-input" maxlength="5" placeholder="Enter 5 aa sequence (e.g., FLFVQ)">
+        <button id="shap-btn" class="accent">Compute SHAP</button>
+      </div>
+      <div id="shap-status" class="status"></div>
+      <div class="kpi-grid">
+        <article class="kpi">
+          <h3>Predicted PSI</h3>
+          <p id="kpi-psi">-</p>
+        </article>
+        <article class="kpi">
+          <h3>Base Value</h3>
+          <p id="kpi-base">-</p>
+        </article>
+      </div>
+
+      <h3>Position Contributions</h3>
+      <div id="position-bars" class="bars"></div>
+
+      <h3>Top SHAP Features</h3>
+      <div class="table-wrap">
+        <table id="shap-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Contribution</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

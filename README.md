@@ -2,7 +2,7 @@
 
 Dear curious scientist,
 
-Thank you for considering our bioinformatics software. This software suite is designed to take you from raw FASTQ.gz/FASTA data through to data visualization of multiple tiered bins of FACS data. This suite is introduced in "Combinatorial mutagenesis of N-terminal sequences reveals unexpected and expanded stability determinants of the Escherichia coli N-degron pathway" by Sen et al., Biorxiv (2025) and "Developing a flow cytometric method to evaluate the stability of protein N-termini" by Sen et al., accepted at Methods In Enzymology (2025). As such, we suggest you use that text to accompany this read me. We utilize protein stability index (PSI) as our metric for evaluating the stability of sequences. We direct you to work from the Elledge Lab, particularly Yen et al. (2008) and Timms et al. (2019) for strong references regarding the development and utilization of this weighted average metric. Furthermore, we have included a small test dataset to help you pilot out this workflow.
+Thank you for considering our bioinformatics software. This software suite is designed to take you from raw FASTQ.gz/FASTA data through to data visualization of multiple tiered bins of FACS data. This suite is introduced in "Combinatorial mutagenesis of N-terminal sequences reveals unexpected and expanded stability determinants of the Escherichia coli N-degron pathway" by Sen et al., Biorxiv (2025) and "Developing a flow cytometric method to evaluate the stability of protein N-termini" by Sen et al., accepted at Methods In Enzymology (2025). As such, we suggest you use that text to accompany this read me. We utilize protein stability index (PSI) as our metric for evaluating the stability of sequences. We direct you to work from the Elledge Lab, particularly Yen et al. (2008) and Timms et al. (2019) for strong references regarding the development and utilization of this weighted average metric. Furthermore, we have included a small test dataset to help you pilot out this workflow, as well as the databases used to generate the data shown in the associated publication.
 
 ## Repository Layout
 
@@ -36,7 +36,10 @@ pip install -r requirements.txt
 python "N-FIVE/SS 13March2025 Predict PSI with model v7.py"
 python "N-FIVE/SS 21Feb2025 SHAP Interaction Visualizer.py"
 python "Scripts/4.) 5 Position Heatmap Generator.py"
+python "N-FIVE/webapp/app.py"
 ```
+
+For the local web GUI, open `http://127.0.0.1:8000` after launching `N-FIVE/webapp/app.py`.
 
 ## Set up Instructions
 1.) Clone/download the full repository and run scripts from the repository root. Put your input `.FASTQ/.FASTQ.gz/.FASTA` files where convenient (for example in `Sample Data/`).
@@ -80,6 +83,12 @@ For the logo script (three databases):
 ```powershell
 python "Scripts/4.) Least Stable Sequences Logomaker.py" "Databases/Feb2025 NGS for Dec2024 WT resort.db" "Databases/10M LFTR- consensus 22Nov.db" "Databases/10M ClpS- consensus 24Nov.db"
 ```
+
+## Notes
+
+The conversion of FASTQ to FASTA and the sequence dictionary generation steps can take minutes to hours depending on the amount of data you have. Other steps should be completed in under 5 minutes, on average, including the installation of necessary packages.
+
+This code has been developed on Python 3.11.
 
 ## Citation
 
