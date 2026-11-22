@@ -4,8 +4,7 @@
 ## Introduction
 Hello,
 
-This software suite is designed to share data and tools related to N-terminal protein stability within E. coli. It's closely tied to the publications "Combinatorial mutagenesis of N-terminal sequences reveals unexpected and expanded stability determinants of the Escherichia coli N-degron pathway" by Sen et al., Nature Communications (2026) and "Developing a flow cytometric method to evaluate the stability of protein N-termini" by Sen et al., accepted at Methods In Enzymology (2025). You'll find , our stability predictive tool N-FIVE, the data used within the paper, and tools to take you from raw FASTQ.gz/FASTA data through to data visualization of multiple tiered bins of FACS data. We utilize protein stability index (PSI) as our metric for evaluating the stability of sequences. We direct you to work from the Elledge Lab, particularly Yen et al. (2008) and Timms et al. (2019) for strong references regarding the development and utilization of this weighted average metric. 
-
+This software suite is designed to share data and tools related to N-terminal protein stability within E. coli. It's closely tied to the publications "Combinatorial mutagenesis of N-terminal sequences reveals unexpected and expanded stability determinants of the Escherichia coli N-degron pathway" by Sen et al., Nature Communications (2026) and "Developing a flow cytometric method to evaluate the stability of protein N-termini" by Sen et al., Methods In Enzymology (2025). You'll find our stability predictive tool N-FIVE, the data used within the paper, and tools to take you from raw FASTQ.gz/FASTA data through to data visualization of multiple tiered bins of FACS data. 
 
 ## Features
 - Predict the stability of an N-terminal sequence with N-FIVE
